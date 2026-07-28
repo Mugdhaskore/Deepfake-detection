@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepfake Detection Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-border-frame"></div>
+
+  <div class="page-shell">
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- HIGHLIGHTED HEADER -->
+    <header class="site-header highlighted-element">
+      <div class="site-branding">
+        <div class="brand">
+          <div class="brand-mark">DF</div>
+          <div class="brand-text">
+            <h1>Deepfake Shield</h1>
+            <p>Verify videos with trusted authenticity reports.</p>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <nav class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#video-detection">Video Detection</a>
+          <a href="#report">Report</a>
+          <a href="#about">About</a>
+        </nav>
+        <a href="#home-detection" class="header-button">Start Scan</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero-section" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Trusted detection for every media upload</p>
+          <h2>Detect deepfakes from home with a fast, modern video verification tool.</h2>
+          <p>Use this home detection experience to inspect videos for suspicious artifacts, metadata anomalies, and AI-generated signals before sharing or reporting them.</p>
+          <div class="hero-actions">
+            <button id="start-button" class="primary-glow-button">Upload media</button>
+            <a href="#video-detection" class="ghost-button">Open video detection</a>
+          </div>
+          <div class="hero-highlights">
+            <div class="hero-highlight-card">
+              <strong>Fast review</strong>
+              <span>Upload and analyze in seconds</span>
+            </div>
+            <div class="hero-highlight-card">
+              <strong>Clear report</strong>
+              <span>See confidence and findings instantly</span>
+            </div>
+            <div class="hero-highlight-card">
+              <strong>Safe workflow</strong>
+              <span>Report suspicious content securely</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-tool-card highlighted-element" id="home-detection">
+          <div class="tool-card-header">
+            <span class="tool-pill">Home detection tool</span>
+            <span class="tool-status">Ready to scan</span>
+          </div>
+          <h3>Quick video safety check</h3>
+          <p>Choose a video file from your phone or computer and run an instant authenticity review.</p>
+
+          <div class="tool-scan-box">
+            <span id="tool-box-label">Choose video file</span>
+            <button id="heroScanButton" class="primary-glow-button small-btn">Scan now</button>
+          </div>
+          <ul>
+            <li>Simple one-click start</li>
+            <li>Visual and metadata insights</li>
+            <li>Built-in report sharing</li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- FEATURES SECTION -->
+      <section class="upload-section" id="video-detection">
+        <div class="upload-content-wrapper">
+          <h3>Video detection workspace</h3>
+          <p>Drop a video file below to analyze authenticity instantly and review the evidence.</p>
+          <div class="upload-controls">
+            <label class="upload-box" for="mediaInput">
+              <span id="upload-box-text">Choose video file</span>
+              <input id="mediaInput" type="file" accept="video/*" />
+            </label>
+            <button id="analyzeButton" class="primary-glow-button">Analyze now</button>
+          </div>
+          <p class="hint-text">Supported formats: MP4, MOV. Detection results are simulated in this demo.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-content">
+            <h4>Real-Time Feedback</h4>
+            <p>See a complete authenticity report immediately after upload.</p>
+          </article>
+          <article class="feature-content">
+            <h4>Visual Insights</h4>
+            <p>Color-coded risk levels, explanation cards, and detection details.</p>
+          </article>
+          <article class="feature-content">
+            <h4>Easy Reporting</h4>
+            <p>Export or save the result summary and share with stakeholders.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- UPLOADED STATUS MONITOR SECTION -->
+      <section class="uploaded-section" id="uploaded">
+        <div class="uploaded-split-container">
+          <div class="uploaded-content-wrapper">
+            <div class="uploaded-copy">
+              <p class="eyebrow">Uploaded media</p>
+              <h3>Your file is ready for detection</h3>
+              <p>Choose your video above and prepare the scan. Once uploaded, the report will highlight suspicious signals, confidence, and next steps.</p>
+            </div>
+            <div class="uploaded-tags">
+              <span class="upload-pill">Video Only</span>
+              <span class="upload-pill">Fast preview</span>
+              <span class="upload-pill">Secure report</span>
+            </div>
+          </div>
+          
+          <div class="relocated-detection-panel">
+            <div class="visual-content-wrapper">
+              <div class="visual-header">
+                <span id="visual-filename">Detection status</span>
+                <span class="status-badge success" id="visual-status">Ready</span>
+              </div>
+              
+              <div class="preview-box-wrapper">
+                <div id="visual-progress" class="progress-ring" aria-label="Detection progress"></div>
+                <div id="media-preview-container" class="hidden"></div>
+              </div>
+
+              <div class="visual-summary">
+                <div>
+                  <span class="metric-label">Type</span>
+                  <strong id="visual-type">Verified</strong>
+                </div>
+                <div>
+                  <span class="metric-label">Confidence</span>
+                  <strong id="visual-confidence">87%</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- REPORT SECTION -->
+      <section class="report-section" id="report">
+        <div class="report-header">
+          <span class="eyebrow">Sample Report</span>
+          <h3>Detection report preview</h3>
+        </div>
+        <div class="report-grid">
+          <div class="report-content-block">
+            <h4>Overall Risk</h4>
+            <div class="risk-pill high">High risk</div>
+            <p style="margin-bottom: 16px;">Model identified multiple synthetic artifacts and facial inconsistencies.</p>
+            <button class="report-fraud-btn" id="reportFraudBtn">Report Fraud Electronically</button>
+          </div>
+          <div class="report-content-block">
+            <h4>Confidence score</h4>
+            <div class="score-circle">64%</div>
+            <p>Combined confidence based on image/video metadata, face quality, and motion traces.</p>
+          </div>
+          <div class="report-content-block">
+            <h4>Detail summary</h4>
+            <ul>
+              <li>Face blending detected</li>
+              <li>Audio mismatch risk moderate</li>
+              <li>Frame noise pattern unusual</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ABOUT SECTION -->
+      <section class="about-section" id="about">
+        <div class="about-copy highlighted-element">
+          <p class="eyebrow">About this portal</p>
+          <h3>Multi-layer detection for truth, trust, and digital safety</h3>
+          <p>Our mission is to combat the spread of synthetic media by giving users a transparent, research-inspired platform for verifying videos with confidence.</p>
+          <p>Built around multimodal deepfake detection principles, the portal combines spatial artifact scanning, cross-modal consistency checks, and explainable AI heatmaps to highlight suspicious regions and signal potential manipulation in video content.</p>
+          <div class="about-pill-row">
+            <span class="about-pill">Spatial artifact scanning</span>
+            <span class="about-pill">Cross-modal consistency</span>
+            <span class="about-pill">Explainable AI heatmaps</span>
+          </div>
+        </div>
+        <div class="about-list">
+          <article class="highlighted-element">
+            <h4>Detection framework</h4>
+            <p>Analyzes frame-level anomalies, facial blending inconsistencies, lighting shifts, and frequency-domain irregularities to build a stronger authenticity signal.</p>
+          </article>
+          <article class="highlighted-element">
+            <h4>Cross-modal reasoning</h4>
+            <p>Correlates visual evidence with metadata and motion clues to identify mismatches that may indicate synthetic generation or tampering.</p>
+          </article>
+          <article class="highlighted-element">
+            <h4>Explainable reporting</h4>
+            <p>Produces intuitive reports with confidence scores, risk summaries, and highlighted evidence so users can understand the decision instead of just receiving a label.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- HIGHLIGHTED FOOTER -->
+    <footer class="site-footer highlighted-element">
+      <div class="footer-copy">
+        <p><strong>Deepfake Shield</strong> • Secure video verification for deepfake detection.</p>
+      </div>
+      <div class="footer-actions">
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#report">Report</a>
+          <a href="#about">About</a>
+        </div>
+        <a href="#features" class="footer-button">Analyze now</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
